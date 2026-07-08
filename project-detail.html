@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детали проекта — RatkeDesign</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .project-detail-container {
+            max-width: 1200px; 
+            margin: 50px auto;
+            width: 90%;
+            background-color: #f9f9f9;
+            border-radius: 40px;
+            padding: 50px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
+            box-sizing: border-box;
+        }
+        #detailed-title {
+            margin: 0 0 15px 0;
+            font-size: 36px;
+            font-weight: 600;
+            color: #1a1a1a;
+            letter-spacing: 0.5px;
+            text-align: left;
+        }
+        #detailed-desc {
+            margin: 0 0 40px 0;
+            font-size: 20px;
+            color: #666666;
+            line-height: 1.6;
+            max-width: 1000px;
+            text-align: left;
+        }
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 0;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease;
+            display: block;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 900px) {
+            .project-detail-container {
+                border-radius: 25px;
+                padding: 30px 20px;
+                margin: 20px auto;
+            }
+            #detailed-title {
+                font-size: 26px;
+            }
+            #detailed-desc {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+            .gallery-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            .gallery-img {
+                height: 200px;
+            }
+        }
+
+
+        .image-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; 
+            cursor: zoom-out;
+        }
+
+
+        .image-modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            cursor: default;
+            animation: zoomAnimation 0.25s ease-out; 
+        }
+
+
+        .image-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .image-modal-close:hover {
+            color: #bbb;
+        }
+
+        .btn-previous, .btn-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #fff;
+            font-size: 50px;
+            font-weight: bold;
+            padding: 20px;
+            cursor: pointer;
+            user-select: none;
+            transition: 0.2s ease;
+        }
+
+        .btn-previous { left: 40px; }
+        .btn-next { right: 40px; }
+
+        .btn-previous:hover, .btn-next:hover {
+            color: #bbb;
+            scale: 1.1;
+        }
+        @keyframes zoomAnimation {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @media (max-width: 600px) {
+            .gallery-container {
+                grid-template-columns: 1fr;
+            }
+            .gallery-img {
+                height: 250px;
+            }
+            .btn-previous, .btn-next {
+                top: auto;
+                bottom: 20px; 
+                transform: none;
+                font-size: 40px;  
+                padding: 10px 30px; 
+                background-color: rgba(255, 255, 255, 0.1); 
+                border-radius: 8px;
+            }
+
+            .btn-previous {
+                left: calc(50% - 90px);
+            }
+            .btn-next {
+                right: calc(50% - 90px);
+                left: auto;
+            }
+
+            .image-modal-content {
+                margin-bottom: 80px; 
+            }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="project-detail.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://lhreibskrvuarjfjlyom.supabase.co/storage/v1/object/public/projects-images/logo%20(1).png" class="logo-img">
+        </div>
+        <h1>RatkeDesign</h1>
+        <nav class="menu">
+            <a href="index.html" class="menu-href">Главная</a>
+            <a href="projects.html" class="menu-href active-href">Проекты</a>
+            <a href="publications.html" class="menu-href">Публикации</a>
+            <a href="compound.html" class="menu-href">Состав проекта</a>
+            <a href="contact.html" class="menu-href">Контакты</a>
+        </nav>
+    </header>
+    <main>
+        <div class="project-detail-container">
+            <h1 id="detailed-title">Загрузка...</h1>
+            <p id="detailed-desc"></p>
+
+            <div class="gallery-container" id="gallery-container"></div>
+        </div>            
+    </main>
+</body>
+</html>

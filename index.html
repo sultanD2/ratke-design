@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RatkeDesign</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        main {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            flex: 1;
+            padding: 60px 40px;
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        .info-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        .info-section-left {
+            padding-left: 5px;
+            padding-right: 20px;
+            padding-top: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .studio-title {
+            font-size: 44px;
+            font-weight: 600;
+            line-height: 1.3;
+            margin: 0;
+            color: #1a1a1a;
+        }
+
+        .cta-button {
+            display: inline-block;
+            align-self: flex-start;
+            padding: 18px 40px;
+            background-color: #1a1a1a;
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #a38970;
+            transform: translateY(-2px);
+        }
+
+        .info-section-right {
+            padding-left: 5px;
+            padding-right: 5px;
+            padding-top: 20px;
+            flex: 1;
+        }
+
+        .main-info {
+            font-size: 17px;
+            line-height: 1.8;
+            color: #555;
+            margin: 0;
+            text-align: justify;
+        }
+
+        footer {
+            max-width: 1300px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 30px 20px;
+            border-top: 1px solid #eee;
+            text-align: center;
+            color: #888;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 650px) {
+            .info-section {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 20px;
+            }
+
+            .info-section-left,
+            .info-section-right {
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-top: 15px;
+            }
+
+            .info-section-right {
+                order: 1;
+            }
+
+            .info-section-left {
+                order: 2;
+                gap: 15px;
+            }
+
+            .studio-title {
+                font-size: 26px;
+            }
+
+            .cta-button {
+                align-self: stretch;
+                text-align: center;
+            }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://lhreibskrvuarjfjlyom.supabase.co/storage/v1/object/public/projects-images/logo%20(1).png" class="logo-img">
+        </div>
+        <h1>RatkeDesign</h1>
+        <nav class="menu">
+            <a href="index.html" class="menu-href active-href">Главная</a>
+            <a href="projects.html" class="menu-href">Проекты</a>
+            <a href="publications.html" class="menu-href">Публикации</a>
+            <a href="compound.html" class="menu-href">Состав проекта</a>
+            <a href="contact.html" class="menu-href">Контакты</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="info-section">
+            <div class="info-section-left">
+                <h2 class="studio-title">Авторский дизайн интерьеров, вдохновленный вашей индивидуальностью</h2>
+                <a href="contact.html" class="cta-button">Обсудить проект</a>
+            </div>
+            
+            <div class="info-section-right">
+                <p class="main-info">Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией 
+                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
+                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
+                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
+                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
+                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
+                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
+                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
+                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
+                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 RatkeDesign. Все права защищены.</p>
+    </footer>
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой сайт</title>
+    <style>
+        main {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .info-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .info-section-left,
+        .info-section-right {
+            padding-left: 5px;
+            padding-right: 100px;
+            padding-top: 20px;
+            flex: 1;
+        }
+
+        .info-section-left {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .main-info {
+            font-size: 22px;
+        }
+
+
+        @media (max-width: 650px) {
+            .info-section {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .info-section-left,
+            .info-section-right {
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-top: 15px;
+            }
+            .info-section-right {
+                order: 1;
+            }
+            .info-section-left {
+                order: 2;
+            }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://lhreibskrvuarjfjlyom.supabase.co/storage/v1/object/public/projects-images/logo%20(1).png" class="logo-img">
+        </div>
+        <h1>RatkeDesign</h1>
+        <nav class="menu">
+            <a href="index.html" class="menu-href active-href">Главная</a>
+            <a href="projects.html" class="menu-href">Проекты</a>
+            <a href="publications.html" class="menu-href">Публикации</a>
+            <a href="compound.html" class="menu-href">Состав проекта</a>
+            <a href="contact.html" class="menu-href">Контакты</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="info-section">
+            <div class="info-section-left">
+            </div>
+            <div class="info-section-right">
+                <p class="main-info">Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией 
+                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
+                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
+                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
+                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
+                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
+                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
+                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
+                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
+                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
+                </p>
+            </div>
+    
+        </section>
+    </main>
+    <footer>
+        <p>© 2026 Мой сайт</p>
+    </footer>
+</body>
+</html> -->
