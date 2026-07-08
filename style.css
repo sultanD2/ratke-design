@@ -85,9 +85,8 @@ header h1 {
     }
 
     .menu-href {
-        font-size: 17px;
+        font-size: 13px;
         font-weight: 500;
         white-space: nowrap; 
-        padding: 6px 10px; 
     }
 }
