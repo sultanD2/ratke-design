@@ -90,3 +90,11 @@ header h1 {
         white-space: nowrap; 
     }
 }
+
+@media (max-width: 350px) {
+    .menu-href {
+        font-size: 10px;
+        font-weight: 500;
+        white-space: nowrap; 
+    }
+}
