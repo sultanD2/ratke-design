@@ -60,7 +60,7 @@ function openPicture(currentIndex, imageArray) {
     const modalImg = document.createElement('img');
 
     modalImg.src = imageArray[currentIndex];
-    modalImg.classList.add('img-modal-content');
+    modalImg.classList.add('image-modal-content');
 
     const closeBtn = document.createElement('span');
     closeBtn.innerHTML =  '&times';

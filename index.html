@@ -3,272 +3,418 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RatkeDesign</title>
+    <title>Главная — RatkeDesign</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+
     <style>
-        main {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            flex: 1;
-            padding: 60px 40px;
-            max-width: 1400px;
-            width: 100%;
-            margin: 0 auto;
-            box-sizing: border-box;
-        }
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 70px;
+    padding: 40px 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
 
-        .info-section {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 40px;
-        }
+.project-card {
+    background: #f9f9f9;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: .3s;
+}
 
-        .info-section-left {
-            padding-left: 5px;
-            padding-right: 20px;
-            padding-top: 20px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
+.project-card:hover {
+    transform: translateY(-3px);
+}
 
-        .studio-title {
-            font-size: 44px;
-            font-weight: 600;
-            line-height: 1.3;
-            margin: 0;
-            color: #1a1a1a;
-        }
+.project-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+}
 
-        .cta-button {
-            display: inline-block;
-            align-self: flex-start;
-            padding: 18px 40px;
-            background-color: #1a1a1a;
-            color: #fff;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            border-radius: 4px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
+.project-gallery {
+    position: relative;
+}
 
-        .cta-button:hover {
-            background-color: #a38970;
-            transform: translateY(-2px);
-        }
+.project-img {
+    width: 100%;
+    height: 650px;
+    object-fit: cover;
+    display: block;
 
-        .info-section-right {
-            padding-left: 5px;
-            padding-right: 5px;
-            padding-top: 20px;
-            flex: 1;
-        }
+    opacity: 1;
+    transition: opacity 0.35s ease;
+}
 
-        .main-info {
-            font-size: 17px;
-            line-height: 1.8;
-            color: #555;
-            margin: 0;
-            text-align: justify;
-        }
+.project-img.changing {
+    opacity: 0;
+}
 
-        footer {
-            max-width: 1300px;
-            width: 100%;
-            margin: 0 auto;
-            padding: 30px 20px;
-            border-top: 1px solid #eee;
-            text-align: center;
-            color: #888;
-            font-size: 14px;
-            box-sizing: border-box;
-        }
+.image-counter {
+    position: absolute;
+    top: 20px;
+    right: 20px;
 
-        @media (max-width: 650px) {
-            .info-section {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 20px;
-            }
+    background: rgba(0,0,0,.45);
+    color: white;
 
-            .info-section-left,
-            .info-section-right {
-                padding-left: 20px;
-                padding-right: 20px;
-                padding-top: 15px;
-            }
+    padding: 8px 14px;
+    border-radius: 20px;
 
-            .info-section-right {
-                order: 1;
-            }
+    font-size: 15px;
+    font-weight: 500;
 
-            .info-section-left {
-                order: 2;
-                gap: 15px;
-            }
+    backdrop-filter: blur(8px);
 
-            .studio-title {
-                font-size: 26px;
-            }
+    z-index: 5;
+}
 
-            .cta-button {
-                align-self: stretch;
-                text-align: center;
-            }
-        }
+.image-dots {
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    gap: 10px;
+
+    z-index: 5;
+}
+
+.image-dot {
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.45);
+
+    transition: .3s;
+}
+
+.image-dot.active {
+    background: #a38970;
+    transform: scale(1.3);
+}
+
+.project-info {
+    padding: 28px 35px;
+    text-align: center;
+}
+
+.project-title {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.project-description {
+    padding: 0 35px 30px;
+}
+
+.project-mini-description {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.8;
+    color: #666;
+    text-align: center;
+}
+
+@media (max-width:900px){
+
+    .container{
+        gap:50px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .project-img{
+        height:420px;
+    }
+
+    .project-title{
+        font-size:26px;
+    }
+
+}
+
+
+
+
+
+.gallery-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 55px;
+    height: 55px;
+
+    border-radius: 50%;
+    border: none;
+
+    background: rgba(0,0,0,.35);
+    color: white;
+
+    font-size: 30px;
+    cursor: pointer;
+
+    z-index: 10;
+    transition: .3s;
+}
+
+.gallery-btn:hover {
+    background: rgba(0,0,0,.6);
+}
+
+.gallery-prev {
+    left: 20px;
+}
+
+.gallery-next {
+    right: 20px;
+}
+
+
+
+.info-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    max-width: 1100px;
+    width: 90%;
+    margin: 70px auto;
+}
+
+
+.info-section-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+
+.info-section-right {
+    flex:1;
+}
+
+
+.main-info {
+    font-size:17px;
+    line-height:1.8;
+    color:#555;
+    text-align:justify;
+}
+
+
+.contacts-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px 40px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    text-decoration: none;
+    color: #2c2c2c;
+
+    font-size: 15px;
+}
+
+.contact-icon {
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    background: #a38970;
+
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 18px;
+
+    flex-shrink: 0;
+
+    transition: .3s;
+}
+
+.contact-item strong {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.contact-item:hover .contact-icon {
+    transform: translateY(-3px);
+}
+
+.contact-icon {
+    transition: .3s;
+}
+
+@media(max-width:650px){
+
+    .project-img{
+        height:260px;
+    }
+
+    .project-info{
+        padding:20px;
+    }
+
+    .project-description{
+        padding:0 20px 20px;
+    }
+
+    .project-title{
+        font-size:22px;
+    }
+
+    .image-counter{
+        top:12px;
+        right:12px;
+        font-size:13px;
+    }
+
+    .image-dot{
+        width:8px;
+        height:8px;
+    }
+
+    .gallery-btn{
+        display:none;
+    }
+
+
+    .info-section{
+        flex-direction:column;
+    }
+
+    .info-section-right{
+        order:1;
+    }
+
+    .info-section-left{
+        order:2;
+    }
+
+    .contacts-list {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+}
     </style>
+
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="main.js" defer></script>
 </head>
-<body>
-    <header>
-        <div class="logo">
-            <img src="https://lhreibskrvuarjfjlyom.supabase.co/storage/v1/object/public/projects-images/logo%20(1).png" class="logo-img">
-        </div>
-        <h1>RatkeDesign</h1>
-        <nav class="menu">
-            <a href="index.html" class="menu-href active-href">Главная</a>
-            <a href="projects.html" class="menu-href">Проекты</a>
-            <a href="publications.html" class="menu-href">Публикации</a>
-            <a href="compound.html" class="menu-href">Состав проекта</a>
-            <a href="contact.html" class="menu-href">Контакты</a>
-        </nav>
-    </header>
 
-    <main>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="https://lhreibskrvuarjfjlyom.supabase.co/storage/v1/object/public/projects-images/logo%20(1).png" class="logo-img">
+    </div>
+
+
+    <nav class="menu">
+        <a href="index.html" class="menu-href active-href">Главная</a>
+        <a href="publications.html" class="menu-href">Публикации</a>
+        <a href="compound.html" class="menu-href">Состав проекта</a>
+        <a href="contact.html" class="menu-href">Контакты</a>
+    </nav>
+</header>
+
+<main>
+
+    <div class="container"></div>
+
+
         <section class="info-section">
+
             <div class="info-section-left">
-                <h2 class="studio-title">Авторский дизайн интерьеров, вдохновленный вашей индивидуальностью</h2>
-                <a href="contact.html" class="cta-button">Обсудить проект</a>
+
+                <h2 class="studio-title">
+                    Контакты
+                </h2>
+                <div class="contacts-list">
+
+                    <a href="" class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+
+                        <div>
+                            <strong>Телефон</strong><br>
+                            +7 (777) 777-77-77
+                        </div>
+                    </a>
+
+
+                    <a href="" class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+
+                        <div>
+                            <strong>Адрес</strong><br>
+                            город улица офис
+                        </div>
+                    </a>
+
+                    <a href="" class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+
+                        <div>
+                            <strong>Whatsapp</strong><br>
+                            +7 (777) 777-77-77
+                        </div>
+                    </a>
+
+                    <a href="" class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fa-brands fa-instagram"></i>
+                        </div>
+
+                        <div>
+                            <strong>Instagram</strong><br>
+                            @ratkedesign
+                        </div>
+                    </a>
+                </div>
             </div>
-            
             <div class="info-section-right">
-                <p class="main-info">Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией 
-                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
-                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
-                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
-                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
-                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
-                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
-                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
-                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
-                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
+                <p class="main-info">
+                    Мы открыты к новым проектам и готовы обсудить
+                    создание индивидуального интерьера для вашего пространства.
+
+                    Свяжитесь с нами удобным способом, чтобы получить
+                    консультацию и узнать больше о процессе работы.
                 </p>
             </div>
         </section>
-    </main>
+</main>
 
-    <footer>
-        <p>© 2026 RatkeDesign. Все права защищены.</p>
-    </footer>
 </body>
 </html>
-
-
-<!-- <!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой сайт</title>
-    <style>
-        main {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .info-section {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .info-section-left,
-        .info-section-right {
-            padding-left: 5px;
-            padding-right: 100px;
-            padding-top: 20px;
-            flex: 1;
-        }
-
-        .info-section-left {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .main-info {
-            font-size: 22px;
-        }
-
-
-        @media (max-width: 650px) {
-            .info-section {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .info-section-left,
-            .info-section-right {
-                padding-left: 20px;
-                padding-right: 20px;
-                padding-top: 15px;
-            }
-            .info-section-right {
-                order: 1;
-            }
-            .info-section-left {
-                order: 2;
-            }
-        }
-    </style>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="main.js" defer></script>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <div class="logo">
-            <img src="https://lhreibskrvuarjfjlyom.supabase.co/storage/v1/object/public/projects-images/logo%20(1).png" class="logo-img">
-        </div>
-        <h1>RatkeDesign</h1>
-        <nav class="menu">
-            <a href="index.html" class="menu-href active-href">Главная</a>
-            <a href="projects.html" class="menu-href">Проекты</a>
-            <a href="publications.html" class="menu-href">Публикации</a>
-            <a href="compound.html" class="menu-href">Состав проекта</a>
-            <a href="contact.html" class="menu-href">Контакты</a>
-        </nav>
-    </header>
-
-    <main>
-        <section class="info-section">
-            <div class="info-section-left">
-            </div>
-            <div class="info-section-right">
-                <p class="main-info">Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией 
-                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
-                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
-                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
-                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
-                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
-                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
-                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
-                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
-                Это текст с информацией Это текст с информацией Это текст с информацией Это текст с информацией
-                </p>
-            </div>
-    
-        </section>
-    </main>
-    <footer>
-        <p>© 2026 Мой сайт</p>
-    </footer>
-</body>
-</html> -->

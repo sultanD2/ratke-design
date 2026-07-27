@@ -9,6 +9,7 @@ body {
     margin: 0;
     background-color: #fafafa;
     color: #2c2c2c;
+    background-color: #f7f7f7;
 }
 
 header {
@@ -57,6 +58,7 @@ header h1 {
 
 
 @media (max-width: 650px) {
+
     header {
         padding: 20px 15px;
     }
@@ -72,29 +74,23 @@ header h1 {
 
     .menu {
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap; 
-        justify-content: center; 
-        gap: 14px 24px;
-        padding: 15px 10px;
+        justify-content: space-between;
+        align-items: center;
+
+        flex-wrap: nowrap;
+
+        gap: 8px;
+
         width: 100%;
-    }
-
-    .menu::-webkit-scrollbar {
-        display: none;  
+        padding: 15px 0;
     }
 
     .menu-href {
-        font-size: 13px;
-        font-weight: 500;
-        white-space: nowrap; 
-    }
-}
+        flex: 1;
+        text-align: center;
 
-@media (max-width: 350px) {
-    .menu-href {
-        font-size: 10px;
-        font-weight: 500;
-        white-space: nowrap; 
+        font-size: clamp(9px, 2.4vw, 12px);
+        white-space: nowrap;
     }
+
 }
