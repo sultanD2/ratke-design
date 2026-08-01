@@ -5,7 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Публикации — RatkeDesign</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+    .publications-container {
+        max-width: 1400px;
+        margin: 60px auto;
+        padding: 0 30px;
+    }
+
+    .publications-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 35px;
+    }
+
+    .publication-card {
+        background: white;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(0,0,0,.08);
+        transition: .3s;
+    }
+
+    .publication-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .publication-title {
+        font-size: 24px;
+        font-weight: 500;
+        padding: 25px;
+    }
+
+    .publication-image {
+        width: 100%;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+        display: block;
+    }
+
+    .publication-link {
+        display: inline-block;
+        margin: 20px 25px 10px;
+        color: #9C8679;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .publication-link:hover {
+        text-decoration: underline;
+    }
+
+    .publication-description {
+        padding: 0 25px 25px;
+        line-height: 1.6;
+        color: #555;
+    }
+
+    @media (max-width: 650px){
+        .publications-grid{
+            grid-template-columns:1fr;
+        }
+    }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="publications.js" defer></script>
 </head>
 <body>
     <header>
@@ -19,5 +89,9 @@
             <a href="contact.html" class="menu-href">Контакты</a>
         </nav>
     </header>
+
+    <main class="publications-container">
+        <div id="publications-list" class="publications-grid"></div>
+    </main>
 </body>
 </html>

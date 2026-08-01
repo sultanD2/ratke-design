@@ -54,7 +54,7 @@ async function loadProjects() {
             <div class="project-gallery">
 
 
-                <a href="project-detail.html?id=${project.id}">
+                <a href="project-detail.html?slug=${project.slug}">
                     <img 
                         class="project-img"
                         src="${images[0]}"
@@ -104,9 +104,6 @@ async function loadProjects() {
         const prevBtn = projectCard.querySelector(".gallery-prev");
         const nextBtn = projectCard.querySelector(".gallery-next");
 
-
-
-        // если только одно фото
         if(images.length <= 1){
 
             prevBtn.style.display = "none";
@@ -184,12 +181,6 @@ async function loadProjects() {
             renderDots();
 
         }
-
-
-
-
-
-        // кнопка вперед
 
         nextBtn.addEventListener("click", e=>{
 
@@ -301,198 +292,4 @@ async function loadProjects() {
 
 }
 
-
-
 loadProjects();
-
-
-// const SUPABASE_URL = 'https://lhreibskrvuarjfjlyom.supabase.co';
-// const SUPABASE_KEY = 'sb_publishable_sh2FIlYA-dCjaxoygQ1mNw_ONq0qGIl';
-
-// const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-// async function loadProjects() {
-//     const container = document.querySelector('.container');
-    
-//     if (!container) return; 
-
-//     const { data, error } = await supabaseClient.from('projects').select('*');
-    
-//     if (error) {
-//         console.error('Ошибка при получении данных:', error);
-//         return;
-//     }
-
-//     container.innerHTML = '';
-
-//     data.forEach(project => {
-
-//             const images =
-//             project.gallery_images && project.gallery_images.length > 0
-//                 ? project.gallery_images
-//                 : [project.preview_image];
-
-//         let currentIndex = 0;
-
-
-//         const projectCard = document.createElement('div');
-
-//         projectCard.classList.add('project-card');
-
-//         projectCard.innerHTML = `
-//             <div class="project-info">
-//                 <h2 class="project-title">${project.title}</h2>
-//             </div>
-
-//             <div class="project-gallery">
-
-//                 <a href="project-detail.html?id=${project.id}">
-//                     <img
-//                         class="project-img"
-//                         src="${images[0]}"
-//                         alt="${project.title}">
-//                 </a>
-
-
-//                 <button class="gallery-btn gallery-prev">
-//                     &#10094;
-//                 </button>
-
-//                 <button class="gallery-btn gallery-next">
-//                     &#10095;
-//                 </button>
-
-
-//                 <div class="image-counter">
-//                     1 / ${images.length}
-//                 </div>
-
-//                 <div class="image-dots"></div>
-
-// </div>
-
-//             <div class="project-description">
-//                 <p class="project-mini-description">
-//                     ${project.mini_description || ""}
-//                 </p>
-//             </div>
-//         `;
-//         container.appendChild(projectCard);
-
-
-//          const img = projectCard.querySelector(".project-img");
-//         const counter = projectCard.querySelector(".image-counter");
-//         const dotsContainer = projectCard.querySelector(".image-dots");
-
-//         const prevBtn = projectCard.querySelector(".gallery-prev");
-//         const nextBtn = projectCard.querySelector(".gallery-next");
-
-//         function renderDots() {
-
-//             dotsContainer.innerHTML = "";
-
-//             images.forEach((_, index) => {
-
-//                 const dot = document.createElement("div");
-
-//                 dot.className =
-//                     index === currentIndex
-//                         ? "image-dot active"
-//                         : "image-dot";
-
-//                 dot.addEventListener("click", () => {
-//                     currentIndex = index;
-//                     updateGallery();
-//                 });
-
-//                 dotsContainer.appendChild(dot);
-
-//             });
-
-//         }
-
-//         function updateGallery() {
-
-//             img.src = images[currentIndex];
-
-//             counter.textContent =
-//                 `${currentIndex + 1} / ${images.length}`;
-
-//             renderDots();
-
-//         }
-
-//         nextBtn.addEventListener("click", e => {
-
-//             e.preventDefault();
-//             e.stopPropagation();
-
-//             currentIndex++;
-
-//             if(currentIndex >= images.length)
-//                 currentIndex = 0;
-
-//             updateGallery();
-
-//         });
-
-
-//         prevBtn.addEventListener("click", e => {
-
-//             e.preventDefault();
-//             e.stopPropagation();
-
-//             currentIndex--;
-
-//             if(currentIndex < 0)
-//                 currentIndex = images.length - 1;
-
-//             updateGallery();
-
-//         });
-
-
-//         let touchStartX = 0;
-
-
-// img.addEventListener("touchstart", e => {
-
-//     touchStartX = e.changedTouches[0].screenX;
-
-// });
-
-
-
-// img.addEventListener("touchend", e => {
-
-//     let touchEndX = e.changedTouches[0].screenX;
-
-
-//     if(Math.abs(touchEndX - touchStartX) < 50)
-//         return;
-
-
-//     if(touchStartX > touchEndX){
-
-//         currentIndex++;
-
-//         if(currentIndex >= images.length)
-//             currentIndex = 0;
-
-//     }
-//     else{
-
-//         currentIndex--;
-
-//         if(currentIndex < 0)
-//             currentIndex = images.length - 1;
-
-//     }
-
-
-//     updateGallery();
-
-// });
-// }
-
-// loadProjects();

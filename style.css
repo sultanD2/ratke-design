@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Work Sans", sans-serif;
     margin: 0;
     background-color: #fafafa;
     color: #2c2c2c;
@@ -25,7 +25,7 @@ header {
 }
 
 .logo-img {
-    max-width: 350px;
+    max-width: 300px;
     width: 100%;
     height: auto;
     display: block;
@@ -53,8 +53,80 @@ header h1 {
 }
 
 .menu-href:hover, .active-href {
-    color: #a38970;
+    color: #9C8679;
 }
+
+
+h1,
+h2,
+h3,
+.project-title,
+.studio-title {
+    font-family: "Lora", serif;
+    font-style: italic;
+    font-weight: normal;
+}
+
+
+
+
+.contacts-list {
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.contact-item {
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    text-decoration:none;
+    color:#2c2c2c;
+
+    font-size:15px;
+}
+
+
+.contact-icon {
+    width:42px;
+    height:42px;
+    border-radius: 50%;
+    color:#fff;
+    background-color: #9C8679;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    flex-shrink:0;
+
+    transition:.3s;
+}
+
+.contact-icon svg {
+    width:28px;
+    height:28px;
+}
+
+.contact-item strong {
+    font-size:19px;
+    font-weight:normal;
+    font-family: "Lora", serif;
+    font-style: italic;
+}
+
+.contact-item:hover .contact-icon {
+    transform:translateY(-3px);
+}
+
+.contact-icon {
+    transition: .3s;
+}
+
 
 
 @media (max-width: 650px) {
@@ -64,7 +136,7 @@ header h1 {
     }
 
     .logo-img {
-        max-width: 260px;
+        max-width: 220px;
     }
 
     header h1 {
@@ -89,8 +161,35 @@ header h1 {
         flex: 1;
         text-align: center;
 
-        font-size: clamp(9px, 2.4vw, 12px);
+        font-size: clamp(11px, 2.4vw, 12px);
         white-space: nowrap;
     }
 
+
+    .contacts-list {
+        flex-direction:column;
+        align-items:flex-start;
+        gap:20px;
+    }
+
+
+
+    .contact-item {
+    gap: 10px;
+    font-size: 13px;
+}
+
+.contact-item strong {
+    font-size: 16px;
+}
+
+.contact-icon {
+    width: 34px;
+    height: 34px;
+}
+
+.contact-icon svg {
+    width: 18px;
+    height: 18px;
+}
 }

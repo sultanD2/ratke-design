@@ -4,21 +4,23 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 async function loadSingleProject() {
     const urlParams = new URLSearchParams(window.location.search);
-    const projectId = urlParams.get('id');
+    const projectSlug = urlParams.get('slug');
 
     const titleElement = document.getElementById('detailed-title');
     const descriptionElement = document.getElementById('detailed-desc');
     const galleryContainer  = document.getElementById('gallery-container');
 
+    const subtitleElement = document.getElementById("detailed-subtitle");
+
     if(!titleElement) return;
 
 
-    if (!projectId) {
+    if (!projectSlug) {
         document.getElementById('detailed-title').innerText = 'Проект не найден';
         return;
     }
 
-    const{data: project, error} = await supabaseClient.from('projects').select('*').eq("id", projectId).single();
+    const{data: project, error} = await supabaseClient.from('projects').select('*').eq("slug", projectSlug).single();
 
     if (error) {
         console.error('ошибка', error);
@@ -28,6 +30,17 @@ async function loadSingleProject() {
     
 
     titleElement.innerText = project.title;
+    if (project.seo_title) {
+        document.title = project.seo_title;
+    }
+    if (project.seo_description) {
+    document
+        .querySelector('meta[name="description"]')
+        .setAttribute("content", project.seo_description);
+    }
+    if (subtitleElement) {
+        subtitleElement.innerText = project.subtitle || "";
+    }
     if(descriptionElement) {
     descriptionElement.innerText = project.description || 'описание отсутсвует';
     }
@@ -40,6 +53,14 @@ async function loadSingleProject() {
         project.gallery_images.forEach((imgUrl, index) => {
             const img = document.createElement('img');
             img.src = imgUrl;
+            img.onload = () => {
+    console.log("Загрузилась:", imgUrl);
+};
+
+img.onerror = () => {
+    console.log("ОШИБКА загрузки:", imgUrl);
+};
+            img.alt = `${project.title} — фото ${index + 1}`;
             img.classList.add('gallery-img');
 
             img.addEventListener('click', function(){
