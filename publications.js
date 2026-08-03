@@ -18,7 +18,15 @@ async function loadPublications() {
         card.className = "publication-card";
 
         card.innerHTML = `
-            <h2 class="publication-title">${publication.name}</h2>
+        <a href="${publication.url_site}" target="_blank" class="publication-card-link">
+
+            <div class="publication-content">
+                <h2 class="publication-title">${publication.name}</h2>
+
+                <div class="publication-description">
+                    ${publication.description}
+                </div>
+            </div>
 
             <img
                 src="${publication.url_img}"
@@ -26,17 +34,7 @@ async function loadPublications() {
                 alt="${publication.name}"
             >
 
-            <a
-                class="publication-link"
-                href="${publication.url_site}"
-                target="_blank"
-            >
-                Подробнее →
-            </a>
-
-            <div class="publication-description">
-                ${publication.description}
-            </div>
+        </a>
         `;
 
         container.appendChild(card);
