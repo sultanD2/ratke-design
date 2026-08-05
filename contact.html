@@ -24,6 +24,41 @@ main {
     box-sizing:border-box;
 }
 
+.designer-section{
+    display:flex;
+    align-items:center;
+    gap:50px;
+    margin-bottom:60px;
+}
+
+.designer-photo{
+    flex:0 0 250px;
+}
+
+.designer-photo img{
+    width:100%;
+    display:block;
+    object-fit:cover;
+}
+
+.designer-info{
+    flex:1;
+}
+
+.designer-info h1{
+    margin-bottom:20px;
+    font-size:25px;
+    font-family:"Lora", serif;
+    font-weight:600;
+}
+
+.designer-info p{
+    margin-bottom:18px;
+    font-size:17px;
+    line-height:1.8;
+    color:#555;
+}
+
 .map-container {
     width:100%;
     height:450px;
@@ -38,6 +73,33 @@ main {
 }
 
 @media(max-width:650px){
+
+
+
+    .designer-section{
+        flex-direction:column;
+        gap:30px;
+        margin-bottom:40px;
+    }
+
+    .designer-photo{
+        width:50%;
+        max-width:340px;
+        flex:none;
+    }
+
+    .designer-info{
+        text-align:left;
+    }
+
+    .designer-info h1{
+        font-size:18px;
+    }
+
+    .designer-info p{
+        font-size:14px;
+        line-height:1.7;
+    }
 
     main {
         padding:30px 20px;
@@ -75,6 +137,30 @@ main {
 </header>
 
 <main>
+
+<section class="designer-section">
+
+    <div class="designer-photo">
+        <img src="https://lhreibskrvuarjfjlyom.supabase.co/storage/v1/object/public/projects-images/designer.png" alt="Дизайнер интерьера RatkeDesign">
+    </div>
+
+    <div class="designer-info">
+        <h1>RatkeDesign</h1>
+
+        <p>
+            Создаю современные и функциональные интерьеры, в которых эстетика
+            сочетается с удобством. Каждый проект разрабатывается индивидуально,
+            с учетом образа жизни, пожеланий и бюджета заказчика.
+        </p>
+
+        <p>
+            От первой идеи до реализации — помогаю создать пространство,
+            которое будет радовать долгие годы. Работаю с квартирами,
+            частными домами и коммерческими помещениями.
+        </p>
+    </div>
+
+</section>
 
 <div class="map-container">
     <iframe

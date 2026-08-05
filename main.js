@@ -48,6 +48,11 @@ async function loadProjects() {
                 <h2 class="project-title">
                     ${project.title}
                 </h2>
+                <div class="project-description">
+                    <p class="project-mini-description">
+                        ${project.mini_description || ""}
+                    </p>
+                </div>
             </div>
 
 
@@ -58,7 +63,7 @@ async function loadProjects() {
                     <img 
                         class="project-img"
                         src="${images[0]}"
-                        alt="${project.title}">
+                        alt="${getImageAlt(images[0], project)}">
                 </a>
 
 
@@ -81,15 +86,6 @@ async function loadProjects() {
 
 
             </div>
-
-
-
-            <div class="project-description">
-                <p class="project-mini-description">
-                    ${project.mini_description || ""}
-                </p>
-            </div>
-
         `;
 
 
@@ -153,24 +149,52 @@ async function loadProjects() {
         }
 
 
+        function getImageAlt(imageUrl, project) {
+            const fileName = imageUrl
+                .split('/')
+                .pop()
+                .replace(/\.[^/.]+$/, '');
+
+            const translate = {
+                gostinaya: "гостиная",
+                koridor: "коридор",
+                kuhnya: "кухня",
+                spalnya: "спальня",
+                table: "стол",
+                vanna: "ванная"
+            };
+
+            let room = null;
+
+            Object.keys(translate).forEach(word => {
+                if(fileName.includes(word)){
+                    room = translate[word];
+                }
+            });
+
+            if(room){
+                return `${project.title} — ${room}`;
+            }
+
+            return project.title;
+        }
+
+
         function updateGallery(){
 
             img.classList.add("changing");
 
 
-            setTimeout(()=>{
+            setTimeout(() => {
 
                 img.src = images[currentIndex];
-
+                img.alt = getImageAlt(images[currentIndex], project);
 
                 img.onload = () => {
-
                     img.classList.remove("changing");
-
                 };
 
-
-            },200);
+            }, 200);
 
 
 
@@ -288,7 +312,6 @@ async function loadProjects() {
 
 
     });
-
 
 }
 

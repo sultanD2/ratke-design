@@ -2,6 +2,46 @@ const SUPABASE_URL = 'https://lhreibskrvuarjfjlyom.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_sh2FIlYA-dCjaxoygQ1mNw_ONq0qGIl';
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+
+function getImageAlt(imageUrl, projectTitle) {
+
+    const fileName = imageUrl
+        .split('/')
+        .pop()
+        .replace(/\.[^/.]+$/, "");
+
+
+    const words = fileName.split("-");
+
+
+    const roomMap = {
+        gostinaya: "гостиная",
+        koridor: "коридор",
+        kuhnya: "кухня",
+        spalnya: "спальня",
+        table: "комната",
+        vanna: "ванная"
+    };
+
+
+    let room = "";
+
+
+    words.forEach(word => {
+        if(roomMap[word]){
+            room = roomMap[word];
+        }
+    });
+
+
+    if(room){
+        return `${projectTitle} — ${room}`;
+    }
+
+
+    return projectTitle;
+}
+
 async function loadSingleProject() {
     const urlParams = new URLSearchParams(window.location.search);
     const projectSlug = urlParams.get('slug');
@@ -53,14 +93,23 @@ async function loadSingleProject() {
         project.gallery_images.forEach((imgUrl, index) => {
             const img = document.createElement('img');
             img.src = imgUrl;
-            img.onload = () => {
-    console.log("Загрузилась:", imgUrl);
-};
+            
+            if (index === 0) {
+                img.loading = "eager";
+            } else {
+                img.loading = "lazy";
+            }
+            
+            img.decoding = "async";
 
-img.onerror = () => {
-    console.log("ОШИБКА загрузки:", imgUrl);
-};
-            img.alt = `${project.title} — фото ${index + 1}`;
+            img.onload = () => {
+                console.log("Загрузилась:", imgUrl);
+            };
+
+            img.onerror = () => {
+                console.log("ОШИБКА загрузки:", imgUrl);
+            };
+            img.alt = getImageAlt(imgUrl, project.title);
             img.classList.add('gallery-img');
 
             img.addEventListener('click', function(){
