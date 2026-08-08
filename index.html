@@ -220,10 +220,48 @@
 }
 
 
+
+
+
+
+
+.hero-intro {
+    max-width: 1100px;
+    width: 90%;
+    margin: 80px auto 20px;
+}
+
+.hero-intro h1 {
+    margin: 0 0 20px;
+    font-family: "Lora", serif;
+    font-size: 25px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: #1a1a1a;
+}
+
+.hero-intro p {
+    margin: 0;
+    max-width: 750px;
+    font-family: "Work Sans", sans-serif;
+    font-size: 19px;
+    line-height: 1.7;
+    color: #666;
+}
+
+
+.info-section-right .hero-intro {
+    width: 100%;
+    max-width: 1100px;
+    margin: 80px auto 20px;
+    padding: 0;
+}
+
 @media(max-width:650px){
 
     .project-mini-description{
-        font-size: 12px;
+        font-size:12px;
+        text-align:left;
     }
 
     .project-img{
@@ -232,14 +270,17 @@
 
     .project-info{
         padding:20px;
+        text-align:left;
     }
 
     .project-description{
-        padding:0 20px 20px;
+        padding:0;
+        text-align:left;
     }
 
     .project-title{
-        font-size: 18px;
+        font-size:18px;
+        text-align:left;
     }
 
     .image-counter{
@@ -280,6 +321,23 @@
         gap:20px;
     }
 
+
+    .hero-intro {
+        width: 90%;
+        margin: 50px auto 10px;
+    }
+
+    .hero-intro h1 {
+        font-size: 18px;
+        line-height: 1.2;
+        margin-bottom: 15px;
+    }
+
+    .hero-intro p {
+        font-size: 12px;
+        line-height: 1.7;
+    }
+
 }
     </style>
 
@@ -305,30 +363,28 @@
 
 <main>
 
+    <section class="hero-intro">
+        <h1>Интерьеры, в которых хочется жить.</h1>
+        <p>
+            Индивидуальный дизайн квартир и домов. Более 25 лет создаю пространства,
+            которые остаются актуальными спустя годы.
+        </p>
+    </section>
+
     <div class="container"></div>
 
 
         <section class="info-section">
 
             <div class="info-section-right">
-                <p class="main-info">
-                    Мы открыты к новым проектам и готовы обсудить
-                    создание индивидуального интерьера для вашего пространства.
-                    Свяжитесь с нами удобным способом, чтобы получить
-                    консультацию и узнать больше о процессе работы.
-                    Мы открыты к новым проектам и готовы обсудить
-                    создание индивидуального интерьера для вашего пространства.
-                    Свяжитесь с нами удобным способом, чтобы получить
-                    консультацию и узнать больше о процессе работы.
-                    Мы открыты к новым проектам и готовы обсудить
-                    создание индивидуального интерьера для вашего пространства.
-                    Свяжитесь с нами удобным способом, чтобы получить
-                    консультацию и узнать больше о процессе работы.
-                    Мы открыты к новым проектам и готовы обсудить
-                    создание индивидуального интерьера для вашего пространства.
-                    Свяжитесь с нами удобным способом, чтобы получить
-                    консультацию и узнать больше о процессе работы.
+            <section class="hero-intro">
+                <h1>Ваш дом заслуживает интерьера, который будет радовать вас каждый день.</h1>
+                <p>
+                    От первой идеи до реализации — создаю пространства, в которых красота сочетается с комфортом, а каждая деталь имеет своё значение.
                 </p>
+            </section>
+
+            <div class="container"></div>
             </div>
 
             <div class="info-section-left">

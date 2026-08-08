@@ -13,7 +13,8 @@ async function loadProjects() {
 
     const { data, error } = await supabaseClient
         .from('projects')
-        .select('*');
+        .select('*')
+        .order('id', {ascending: true});
 
 
     if (error) {

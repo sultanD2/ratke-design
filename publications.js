@@ -4,7 +4,10 @@ const SUPABASE_KEY = 'sb_publishable_sh2FIlYA-dCjaxoygQ1mNw_ONq0qGIl';
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 async function loadPublications() {
-    const{data, error} = await supabaseClient.from("publications").select("*");
+    const{data, error} = await supabaseClient
+    .from("publications")
+    .select("*")
+    .order('id', {ascending: true});
 
     if (error) {
         console.log(error)

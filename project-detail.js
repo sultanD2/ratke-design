@@ -20,7 +20,21 @@ function getImageAlt(imageUrl, projectTitle) {
         kuhnya: "кухня",
         spalnya: "спальня",
         table: "комната",
-        vanna: "ванная"
+        vanna: "ванная",
+        room: "комната",
+        house: "дом",
+        door: "дверь",
+        fasad: "фасад",
+        skaf: "шкаф",
+        garden: "сад",
+        stair: "лестница",
+        gym: "зал",
+        hallway: "прихожая",   
+        loggia: "лоджия",
+        secondfloor: "второй этаж",
+        cabinet: "кабинет",
+        childrenroom: "детская комната",
+        dressingroom: "гардеробная комната"
     };
 
 

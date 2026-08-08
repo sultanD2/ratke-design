@@ -33,10 +33,20 @@ main {
 
 .designer-photo{
     flex:0 0 250px;
+    text-align: center;
+}
+
+.designer-name {
+    margin-top: 18px;
+    width:80%;
+    font-family: "Lora", serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: #1a1a1a;
 }
 
 .designer-photo img{
-    width:100%;
+    width:80%;
     display:block;
     object-fit:cover;
 }
@@ -72,6 +82,34 @@ main {
     border:none;
 }
 
+
+
+.hero-intro {
+    max-width: 1100px;
+    width: 90%;
+    margin: 80px auto 20px;
+    margin-bottom: 80px;
+}
+
+.hero-intro h1 {
+    margin: 0 0 20px;
+    font-family: "Lora", serif;
+    font-size: 25px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: #1a1a1a;
+}
+
+.hero-intro p {
+    margin: 0;
+    max-width: 750px;
+    font-family: "Work Sans", sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #666;
+}
+
 @media(max-width:650px){
 
 
@@ -86,6 +124,10 @@ main {
         width:50%;
         max-width:340px;
         flex:none;
+    }
+    
+    .designer-name {
+        font-size: 15px;
     }
 
     .designer-info{
@@ -114,6 +156,25 @@ main {
         align-items:flex-start;
         gap:20px;
     }
+
+
+
+        .hero-intro {
+        width: 90%;
+        margin: 50px auto 10px;
+        margin-bottom: 50px;
+    }
+
+    .hero-intro h1 {
+        font-size: 18px;
+        line-height: 1.2;
+        margin-bottom: 15px;
+    }
+
+    .hero-intro p {
+        font-size:14px;
+        line-height: 1.7;
+    }
 }
 
 
@@ -141,22 +202,19 @@ main {
 <section class="designer-section">
 
     <div class="designer-photo">
-        <img src="https://lhreibskrvuarjfjlyom.supabase.co/storage/v1/object/public/projects-images/designer.png" alt="Дизайнер интерьера RatkeDesign">
+        <img src="https://lhreibskrvuarjfjlyom.supabase.co/storage/v1/object/public/projects-images/designer.webp" alt="Дизайнер интерьера RatkeDesign">
+        <div class="designer-name">Наталья Ратке</div>
     </div>
 
     <div class="designer-info">
-        <h1>RatkeDesign</h1>
+        <h1>Любимое дело длиною в 25 лет</h1>
 
         <p>
-            Создаю современные и функциональные интерьеры, в которых эстетика
-            сочетается с удобством. Каждый проект разрабатывается индивидуально,
-            с учетом образа жизни, пожеланий и бюджета заказчика.
+            Мой профессиональный путь начался ещё на последнем курсе художественно-графического факультета КарГУ имени Е. А. Букетова. С тех пор дизайн стал для меня не просто профессией, а делом, которое по-настоящему вдохновляет.
         </p>
 
         <p>
-            От первой идеи до реализации — помогаю создать пространство,
-            которое будет радовать долгие годы. Работаю с квартирами,
-            частными домами и коммерческими помещениями.
+            Есть известное выражение: «Выберите себе дело по душе, и вам не придётся работать ни одного дня в своей жизни.» Именно так я отношусь к своей работе. Каждый проект — это возможность создать пространство, которое будет радовать своих владельцев долгие годы.
         </p>
     </div>
 
@@ -172,6 +230,14 @@ main {
         style="position:relative; min-height:400px; border-radius:12px;">
     </iframe>
 </div>
+
+    <section class="hero-intro">
+        <h1>Интерьеры, в которых хочется жить.</h1>
+        <p>
+            Индивидуальный дизайн квартир и домов. Более 25 лет создаю пространства,
+            которые остаются актуальными спустя годы.
+        </p>
+    </section>
 
 <div class="contacts-list">
                     <a href="tel:+77003306923" class="contact-item">
