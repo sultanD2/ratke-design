@@ -195,7 +195,7 @@
     gap: 50px;
     max-width: 1100px;
     width: 90%;
-    margin: 70px auto;
+    margin: 5px auto 25px;
 }
 
 
@@ -228,33 +228,43 @@
 .hero-intro {
     max-width: 1100px;
     width: 90%;
-    margin: 80px auto 20px;
+    margin: 70px auto 10px;
 }
 
 .hero-intro h1 {
     margin: 0 0 20px;
     font-family: "Lora", serif;
-    font-size: 25px;
+    font-size: 23px;
     line-height: 1.15;
     letter-spacing: -0.02em;
     color: #1a1a1a;
+    text-align: center;
 }
 
 .hero-intro p {
-    margin: 0;
-    max-width: 750px;
+    margin: 0 auto;
+    max-width: 850px;
     font-family: "Work Sans", sans-serif;
-    font-size: 19px;
+    font-size: 17px;
     line-height: 1.7;
     color: #666;
+    text-align: center;
 }
 
 
 .info-section-right .hero-intro {
     width: 100%;
     max-width: 1100px;
-    margin: 80px auto 20px;
+    margin: 0 auto 0;
     padding: 0;
+}
+
+.projects-line {
+    width: 90%;
+    max-width: 1100px;
+    height: 1px;
+    background: #cfcfcf;
+    margin: 40px auto 0;
 }
 
 @media(max-width:650px){
@@ -300,11 +310,16 @@
 
 
     .info-section {
-        gap:35px;
+        gap: 0;
     }
 
     .info-section-right{
-        order:1;
+        order: 1;
+        align-self: flex-start;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
     }
 
     .main-info {
@@ -324,7 +339,7 @@
 
     .hero-intro {
         width: 90%;
-        margin: 50px auto 10px;
+        margin: 25px auto 10px;
     }
 
     .hero-intro h1 {
@@ -370,6 +385,8 @@
             которые остаются актуальными спустя годы.
         </p>
     </section>
+
+    <div class="projects-line"></div>
 
     <div class="container"></div>
 
