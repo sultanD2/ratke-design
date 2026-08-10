@@ -60,7 +60,7 @@ async function loadProjects() {
             <div class="project-gallery">
 
 
-                <a href="project-detail.html?slug=${project.slug}">
+                <a href="/projects/${project.slug}">
                     <img 
                         class="project-img"
                         src="${images[0]}"
