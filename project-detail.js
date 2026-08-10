@@ -57,8 +57,11 @@ function getImageAlt(imageUrl, projectTitle) {
 }
 
 async function loadSingleProject() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const projectSlug = urlParams.get('slug');
+    // const urlParams = new URLSearchParams(window.location.search);
+    // const projectSlug = urlParams.get('slug');
+
+    const pathParts = window.location.pathname.split("/");
+    const projectSlug = pathParts[pathParts.length - 1];
 
     const titleElement = document.getElementById('detailed-title');
     const descriptionElement = document.getElementById('detailed-desc');
