@@ -1,5 +1,39 @@
 {
+  "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/publications.html",
+      "destination": "/publications",
+      "permanent": true
+    },
+    {
+      "source": "/compound.html",
+      "destination": "/compound",
+      "permanent": true
+    },
+    {
+      "source": "/contact.html",
+      "destination": "/contact",
+      "permanent": true
+    }
+  ],
   "rewrites": [
+    {
+      "source": "/publications",
+      "destination": "/publications.html"
+    },
+    {
+      "source": "/compound",
+      "destination": "/compound.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html"
+    },
     {
       "source": "/projects/:slug",
       "destination": "/project-detail.html?slug=:slug"
