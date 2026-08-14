@@ -34,7 +34,11 @@ function getImageAlt(imageUrl, projectTitle) {
         secondfloor: "второй этаж",
         cabinet: "кабинет",
         childrenroom: "детская комната",
-        dressingroom: "гардеробная комната"
+        dressingroom: "гардеробная комната",
+        main: "Главная",
+        cash: "касса",
+        foodzone: "зона для еды",
+        window: "окно"
     };
 
 
