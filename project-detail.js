@@ -60,6 +60,26 @@ function getImageAlt(imageUrl, projectTitle) {
     return projectTitle;
 }
 
+function setOpenGraph(project, projectSlug) {
+    const ogTitle = project.seo_title || project.title;
+    const ogDescription = project.seo_description || project.description || "";
+    const ogImage = project.gallery_images?.[0] || "";
+    const ogUrl = `https://www.ratkedesign.kz/projects/${projectSlug}`;
+
+    document.querySelector('meta[property="og:title"]')
+        ?.setAttribute("content", ogTitle);
+
+    document.querySelector('meta[property="og:description"]')
+        ?.setAttribute("content", ogDescription);
+
+    document.querySelector('meta[property="og:image"]')
+        ?.setAttribute("content", ogImage);
+
+    document.querySelector('meta[property="og:url"]')
+        ?.setAttribute("content", ogUrl);
+}
+
+
 async function loadSingleProject() {
     // const urlParams = new URLSearchParams(window.location.search);
     // const projectSlug = urlParams.get('slug');
@@ -100,6 +120,8 @@ async function loadSingleProject() {
         document.getElementById('detailed-title').innerText = 'Ошибка загрузки проекта';
         return;
     }
+
+    setOpenGraph(project, projectSlug);
     
 
     titleElement.innerText = project.title;
