@@ -67,6 +67,18 @@ async function loadSingleProject() {
     const pathParts = window.location.pathname.split("/");
     const projectSlug = pathParts[pathParts.length - 1];
 
+    const canonicalUrl = `https://www.ratkedesign.kz/projects/${projectSlug}`;
+
+    let canonical = document.querySelector('link[rel="canonical"]');
+
+    if (!canonical) {
+        canonical = document.createElement('link');
+        canonical.rel = 'canonical';
+        document.head.appendChild(canonical);
+    }
+
+    canonical.href = canonicalUrl;
+
     const titleElement = document.getElementById('detailed-title');
     const descriptionElement = document.getElementById('detailed-desc');
     const galleryContainer  = document.getElementById('gallery-container');
