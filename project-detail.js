@@ -122,7 +122,27 @@ async function loadSingleProject() {
     }
 
     setOpenGraph(project, projectSlug);
-    
+
+
+    const structuredData = {
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "name": project.title,
+        "description": project.seo_description || project.description || "",
+        "url": `https://www.ratkedesign.kz/projects/${projectSlug}`,
+        "image": project.gallery_images || [],
+        "creator": {
+            "@type": "ProfessionalService",
+            "name": "Ratke Design",
+            "url": "https://www.ratkedesign.kz/"
+        }
+    };
+
+    const schemaScript = document.createElement("script");
+    schemaScript.type = "application/ld+json";
+    schemaScript.textContent = JSON.stringify(structuredData);
+
+    document.head.appendChild(schemaScript);
 
     titleElement.innerText = project.title;
     if (project.seo_title) {
