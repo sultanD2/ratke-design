@@ -3,6 +3,15 @@ const SUPABASE_KEY = 'sb_publishable_sh2FIlYA-dCjaxoygQ1mNw_ONq0qGIl';
 
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+function optimizeImage(url, width = 800) {
+    if (!url) return url;
+
+    return url.replace(
+        '/storage/v1/object/public/',
+        '/storage/v1/render/image/public/'
+    ) + `?width=${width}&quality=75`;
+}
+
 
 async function loadProjects() {
 
@@ -29,10 +38,15 @@ async function loadProjects() {
     data.forEach(project => {
 
 
+        // const images = [
+        //     project.preview_image,
+        //     ...(project.gallery_images || [])
+        // ].filter(Boolean);
+
         const images = [
             project.preview_image,
             ...(project.gallery_images || [])
-        ].filter(Boolean);
+        ].filter(Boolean).map(url => optimizeImage(url, 800));
 
 
         let currentIndex = 0;
