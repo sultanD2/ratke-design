@@ -7,6 +7,12 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 async function loadProjects() {
 
+    const infoSection = document.querySelector('.info-section');
+
+    if (infoSection) {
+        infoSection.style.visibility = 'hidden';
+    }
+
     const container = document.querySelector('.container');
 
     if (!container) return;
@@ -20,6 +26,11 @@ async function loadProjects() {
 
     if (error) {
         console.error('Ошибка при получении данных:', error);
+
+        if (infoSection) {
+            infoSection.style.visibility = 'visible';
+        }
+        
         return;
     }
 
@@ -311,7 +322,9 @@ async function loadProjects() {
 
         });
     });
-
+    if (infoSection) {
+        infoSection.style.visibility = 'visible';
+    }
 }
 
 loadProjects();
