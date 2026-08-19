@@ -3,14 +3,6 @@ const SUPABASE_KEY = 'sb_publishable_sh2FIlYA-dCjaxoygQ1mNw_ONq0qGIl';
 
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-function optimizeImage(url, width = 800) {
-    if (!url) return url;
-
-    return url.replace(
-        '/storage/v1/object/public/',
-        '/storage/v1/render/image/public/'
-    ) + `?width=${width}&quality=75`;
-}
 
 
 async function loadProjects() {
@@ -38,15 +30,10 @@ async function loadProjects() {
     data.forEach(project => {
 
 
-        // const images = [
-        //     project.preview_image,
-        //     ...(project.gallery_images || [])
-        // ].filter(Boolean);
-
         const images = [
             project.preview_image,
             ...(project.gallery_images || [])
-        ].filter(Boolean).map(url => optimizeImage(url, 800));
+        ].filter(Boolean);
 
 
         let currentIndex = 0;
@@ -78,7 +65,9 @@ async function loadProjects() {
                     <img 
                         class="project-img"
                         src="${images[0]}"
-                        alt="${getImageAlt(images[0], project)}">
+                        alt="${getImageAlt(images[0], project)}"
+                        loading="eager"
+                        decoding="async">
                 </a>
 
 
@@ -204,6 +193,8 @@ async function loadProjects() {
 
                 img.src = images[currentIndex];
                 img.alt = getImageAlt(images[currentIndex], project);
+                img.loading = currentIndex === 0 ? "eager" : "lazy";
+                img.decoding = "async";
 
                 img.onload = () => {
                     img.classList.remove("changing");
@@ -319,13 +310,6 @@ async function loadProjects() {
 
 
         });
-
-
-
-
-        updateGallery();
-
-
     });
 
 }
