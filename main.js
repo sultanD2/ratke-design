@@ -38,7 +38,7 @@ async function loadProjects() {
     container.innerHTML = '';
 
 
-    data.forEach(project => {
+    data.forEach((project, projectIndex) => {
 
 
         const images = [
@@ -73,11 +73,12 @@ async function loadProjects() {
 
 
                 <a href="/projects/${project.slug}">
-                    <img 
+                    <img
                         class="project-img"
                         src="${images[0]}"
                         alt="${getImageAlt(images[0], project)}"
-                        loading="eager"
+                        loading="${projectIndex === 0 ? 'eager' : 'lazy'}"
+                        fetchpriority="${projectIndex === 0 ? 'high' : 'auto'}"
                         decoding="async">
                 </a>
 
