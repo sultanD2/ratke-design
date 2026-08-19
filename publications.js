@@ -4,6 +4,13 @@ const SUPABASE_KEY = 'sb_publishable_sh2FIlYA-dCjaxoygQ1mNw_ONq0qGIl';
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 async function loadPublications() {
+
+    const contactsList = document.querySelector('.contacts-list');
+
+    if (contactsList) {
+        contactsList.style.visibility = 'hidden';
+    }
+
     const{data, error} = await supabaseClient
     .from("publications")
     .select("*")
@@ -11,6 +18,10 @@ async function loadPublications() {
 
     if (error) {
         console.log(error)
+
+        if (contactsList) {
+            contactsList.style.visibility = 'visible';
+        }
         return;
     }
 
@@ -42,5 +53,9 @@ async function loadPublications() {
 
         container.appendChild(card);
     });
+
+    if (contactsList) {
+        contactsList.style.visibility = 'visible';
+    }
 }
 loadPublications();
